@@ -1,5 +1,11 @@
 extends layout
 
 block content
-  h1= title
-  p Welcome to #{title}
+  div(class="p-3")
+    form(class="d-flex justify-content-center", method="post", action="/")
+        div(class="flex-fill mr-2", style="max-width: 400px")
+            input(type="text", maxlength="64", name="message", value="#{message}", class="form-control mr-2", placeholder="Säg något till mig på svenska", autocomplete="off", autofocus)
+        div
+            button(type="submit", class="btn btn-primary") Skicka
+
+

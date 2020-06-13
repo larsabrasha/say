@@ -1,9 +1,19 @@
-var express = require('express');
-var router = express.Router();
+const express = require("express");
+const router = express.Router();
+const fetch = require("node-fetch");
 
-/* GET home page. */
-router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Express' });
+router.get("/", function (req, res, next) {
+  res.render("index", { message: "Ett meddelande" });
+});
+
+router.post("/", function (req, res, next) {
+  var message = req.body["message"];
+
+  fetch(
+    encodeURI("http://192.168.1.149:5005/Gästrum/say/" + message + "/sv/40")
+  ).then((x) => {
+    res.redirect("/");
+  });
 });
 
 module.exports = router;
