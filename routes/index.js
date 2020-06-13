@@ -3,7 +3,9 @@ const router = express.Router();
 const fetch = require("node-fetch");
 
 router.get("/", function (req, res, next) {
-  res.render("index", { message: "Ett meddelande" });
+  const message = req.query.message;
+  console.log(message);
+  res.render("index", { message: message != null ? message : "" });
 });
 
 router.post("/", function (req, res, next) {
@@ -11,9 +13,9 @@ router.post("/", function (req, res, next) {
 
   fetch(
     encodeURI("http://192.168.1.149:5005/Gästrum/say/" + message + "/sv/40")
-  ).then((x) => {
-    res.redirect("/");
-  });
+  );
+
+  res.redirect("?message=" + message);
 });
 
 module.exports = router;
