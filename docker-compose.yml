@@ -1,0 +1,7 @@
+version: "2.0"
+services:
+  say:
+    build: .
+    container_name: say
+    ports:
+      - "3000:3000"
