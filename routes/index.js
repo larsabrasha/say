@@ -30,14 +30,14 @@ router.post("/", function (req, res, next) {
 
 function validateTime() {
   var date = new Date();
-  var current_day = date.getDay();
-  var current_hour = date.getHours();
+  var current_day = date.getUTCDay();
+  var current_hour = date.getUTCHours();
 
   return (
     current_day != 0 &&
     current_day != 6 &&
-    current_hour >= 9 &&
-    current_hour < 16
+    current_hour >= 7 &&
+    current_hour < 14
   );
 }
 
